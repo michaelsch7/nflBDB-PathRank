@@ -3,13 +3,6 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt 
 
-# Get Data 
-playData = pd.read_csv('data/plays.csv')
-gameData = pd.read_csv('data/games.csv')
-playerData = pd.read_csv('data/players.csv')
-pffData = pd.read_csv('data/pffScoutingData.csv')
-week1Data = pd.read_csv('data/week1.csv')
-
 def drawPath(playid, team, jersey):
 # Query to get desired play, player
     Play = week1Data.query("playId == @playid")
