@@ -1,11 +1,6 @@
-# Imports 
-import numpy as np 
-import pandas as pd 
-import matplotlib.pyplot as plt 
-
-def drawPath(playid, team, jersey):
+def drawPath(playid, team, jersey, weekDF):
 # Query to get desired play, player
-    Play = week1Data.query("playId == @playid")
+    Play = weekDF.query("playId == @playid")
     Team = Play.query("team == @team")
     playerPath = Team.query("jerseyNumber == @jersey")
 
