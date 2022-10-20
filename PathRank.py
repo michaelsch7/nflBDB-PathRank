@@ -4,15 +4,16 @@ from DrawPath import drawPath, getPlayerXY
 
 def main():
     weekDF = pd.read_csv("week1.csv")
-    # drawPath(97, "TB", 13, 12, weekDF)
+    people = pd.read_csv("players.csv")
+    total = pd.read_csv("plays.csv")
     play = weekDF.query("playId == 4287")
-    play = play.query("team == 'TB'")
+    play = play.query("team == 'DAL'")
 
     list = []
-    for player in play.jerseyNumber.unique():
+    for player in play.nflId.unique():
         list.append(player)
     
-    drawPath(play, list)
+    drawPath(play, total, people, list)
 
 if __name__ == '__main__':
     main()

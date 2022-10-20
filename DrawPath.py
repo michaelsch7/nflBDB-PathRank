@@ -1,5 +1,11 @@
-def drawPath(play, list):
+def drawPath(play, total, people, list):
 # Plot path 
+    gId = play.gameId.unique()[0]
+    pId = play.playId.unique()[0]
+    total = total.query("gameId == @gId")
+    total = total.query("playId == @pId")
+    desc = total.playDescription.unique()    
+    
     a,b = getPlayerXY(play, list[0])
     c,d = getPlayerXY(play, list[1])
     e,f = getPlayerXY(play, list[2])
@@ -13,26 +19,28 @@ def drawPath(play, list):
     u,v = getPlayerXY(play, list[10])
     
     import matplotlib.pyplot as plt 
-    fig = plt.figure()
-    movement = fig.add_axes([0,0,1,1])
-    movement.plot(a,b)
-    movement.plot(c,d)
-    movement.plot(e,f)
-    movement.plot(g,h)
-    movement.plot(i,j)
-    movement.plot(k,l)
-    movement.plot(m,n)
-    movement.plot(o,p)
-    movement.plot(q,r)
-    movement.plot(s,t)
-    movement.plot(u,v)
-    movement.set_ylim(0,53.3) # Height of football field 
-    movement.set_xlim(0,120) # Width of football field 
+    # fig = plt.figure()
+    # movement = fig.add_axes([0,0,1,1])
+    plt.plot(a,b, label=people.query("nflId == @list[0]").displayName.unique()[0])
+    plt.plot(c,d, label=people.query("nflId == @list[1]").displayName.unique()[0])
+    plt.plot(e,f, label=people.query("nflId == @list[2]").displayName.unique()[0])
+    plt.plot(g,h, label=people.query("nflId == @list[3]").displayName.unique()[0])
+    plt.plot(i,j, label=people.query("nflId == @list[4]").displayName.unique()[0])
+    plt.plot(k,l, label=people.query("nflId == @list[5]").displayName.unique()[0])
+    plt.plot(m,n, label=people.query("nflId == @list[6]").displayName.unique()[0])
+    plt.plot(o,p, label=people.query("nflId == @list[7]").displayName.unique()[0])
+    plt.plot(q,r, label=people.query("nflId == @list[8]").displayName.unique()[0])
+    plt.plot(s,t, label=people.query("nflId == @list[9]").displayName.unique()[0])
+    plt.plot(u,v, label=people.query("nflId == @list[10]").displayName.unique()[0])
+    # movement.set_ylim(0,53.3) # Height of football field 
+    # movement.set_xlim(0,120) # Width of football field 
     plt.grid(True, color="black", axis="x")
+    plt.title(desc[0], fontsize=8)
+    plt.legend()
     plt.show()
 
 def getPlayerXY(play, player):
-    pPath = play.query("jerseyNumber == @player")
+    pPath = play.query("nflId == @player")
     x = pPath.x
     y = pPath.y
 
