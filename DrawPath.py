@@ -1,13 +1,4 @@
-def drawPath(playid, team, jersey, weekDF):
-# Query to get desired play, player
-    Play = weekDF.query("playId == @playid")
-    Team = Play.query("team == @team")
-    playerPath = Team.query("jerseyNumber == @jersey")
-
-# Movement path
-    x = playerPath.x
-    y = playerPath.y
-
+def drawPath(x,y):
 # Plot path 
     import matplotlib.pyplot as plt 
     fig = plt.figure()
@@ -17,3 +8,10 @@ def drawPath(playid, team, jersey, weekDF):
     movement.set_xlim(0,120) # Width of football field 
     plt.grid(True, color="black", axis="x")
     plt.show()
+
+def getPlayerXY(play, player):
+    pPath = play.query("jerseyNumber == @player")
+    x = pPath.x
+    y = pPath.y
+
+    return x,y
