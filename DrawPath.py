@@ -9,6 +9,7 @@ def drawPath(playid, team, jersey, weekDF):
     y = playerPath.y
 
 # Plot path 
+    import matplotlib.pyplot as plt 
     fig = plt.figure()
     movement = fig.add_axes([0,0,1,1])
     movement.plot(x,y)
