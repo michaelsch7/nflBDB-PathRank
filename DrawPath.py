@@ -1,3 +1,4 @@
+# Seeing if github is connected 
 def drawPath(play, total, people, list):
 # Plot path 
     gId = play.gameId.unique()[0]
