@@ -1,7 +1,14 @@
+# Imports 
 import numpy as np 
 from DrawPath import getPlayerXY
 import matplotlib.pyplot as plt 
 
+# Function optimalPath:
+# this function takes in 5 parameters: the week dataframe, the plays dataframe, the players dataframe, the scouting dataframe,
+# and the play id (numeric)
+# this function plots the 'optimal pass rush path' and gets the equation of the line 
+# 
+# 
 def optimalPath(weekDF, total, people, scouting, playid):
     
     defLine = []
@@ -20,10 +27,26 @@ def optimalPath(weekDF, total, people, scouting, playid):
 
     for i in qb:
         qbX, qbY = getPlayerXY(play, i)
-    
-    for j in defLine: 
+    for j in defLine:
         dlX, dlY = getPlayerXY(play, j)
-        if(people.query("(nflId == @j) and (officialPosition == 'NT')").nflId.values.__contains__(j)):
-            plt.plot([qbX.values[0], dlX.values[0]], [qbY.values[0], dlY.values[0]], marker='<')
+        
+        if(people.query("nflId == @j").nflId.values.__contains__(j)):
+            plt.plot([qbX.values[0] - 3, dlX.values[0]], [qbY.values[0], dlY.values[0]], marker='<')
+            print()
+            # getFunction(qbX.values[0] - 3, dlX.values[0], qbY.values[0], dlY.values[0], True)
+            getFunction(qbX.values[0] - 3, dlX.values[0], qbY.values[0], dlY.values[0])
+            print()
+    
+    
+def getFunction(x1, x2, y1, y2): 
+    # if(isOptimal == True):
+        m = (y2-y1) / (x2-x1)
+        b = y1 - m*x1
+        print(np.array([m,b]))
+        return np.array([m,b])
+    # if(isOptimal == False):
+    #     # Implement getFunc method for curved lines
+    #     print(np.polyfit(x2,y2,5))
+    #     return np.polyfit(x2,y2,5)
             
     
