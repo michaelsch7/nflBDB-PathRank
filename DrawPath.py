@@ -1,6 +1,7 @@
 def drawPath(weekDF, total, people, scouting, playid):
         # Plot path 
         import matplotlib.pyplot as plt 
+        from OptimalPath import optimalPath
         
         play = weekDF.query("playId == @playid")
         list = []
@@ -17,6 +18,7 @@ def drawPath(weekDF, total, people, scouting, playid):
             x,y = getPlayerXY(play, i)
             plt.plot(x,y, label=people.query("nflId == @i").displayName.unique()[0], marker = '<', linestyle = 'None')
         
+        optimalPath(weekDF, total, people, scouting, playid)
         plt.grid(True, color="black", axis="x")
         plt.title("Pass Rush", fontsize=8)
         plt.legend()
@@ -27,5 +29,5 @@ def getPlayerXY(play, player):
         x = pPath.x
         y = pPath.y
 
-        return x,y
+        return x[10:],y[10:]
 
