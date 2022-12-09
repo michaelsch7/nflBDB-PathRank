@@ -2,15 +2,15 @@ import numpy as np
 import pandas as pd
 from DrawPath import drawPath
 
+WEEKDF = pd.read_csv("data/week1.csv")
+PLAYS = pd.read_csv("data/plays.csv")
+PLAYERS = pd.read_csv("data/players.csv")
+SCOUTING = pd.read_csv("data/pffScoutingData.csv")
+PLAYID = 1687  
+  
 def main():
-    # Data
-    weekDF = pd.read_csv("data/week1.csv")
-    people = pd.read_csv("data/players.csv")
-    total = pd.read_csv("data/plays.csv")
-    scouting = pd.read_csv("data/pffScoutingData.csv")
-    
     # Run drawPath - Expected output picture    
-    drawPath(weekDF, total, people, scouting, 2298)
+    drawPath(WEEKDF, PLAYS, PLAYERS, SCOUTING, PLAYID)
     
 if __name__ == '__main__':
     main()
