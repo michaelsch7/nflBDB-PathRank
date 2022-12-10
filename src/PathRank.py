@@ -7,7 +7,7 @@ WEEKDF = pd.read_csv("data/week1.csv")
 PLAYS = pd.read_csv("data/plays.csv")
 PLAYERS = pd.read_csv("data/players.csv")
 SCOUTING = pd.read_csv("data/pffScoutingData.csv")
-PLAYID = 1687  
+PLAYID = 137  
   
 def main():
     # Run drawPath - Expected output picture    
