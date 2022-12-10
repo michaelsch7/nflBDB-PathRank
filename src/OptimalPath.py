@@ -37,11 +37,18 @@ def optimalPath(weekDF, total, people, scouting, playid):
     
     # plot values   
         if(people.query("nflId == @j").nflId.values.__contains__(j)):
-            plt.plot([qbX.values[0] - 3, dlX.values[0]], [qbY.values[0], dlY.values[0]], marker='<')
-            print()
-            # getFunction(qbX.values[0] - 3, dlX.values[0], qbY.values[0], dlY.values[0], True)
-            getFunction(qbX.values[0] - 3, dlX.values[0], qbY.values[0], dlY.values[0])
-            print()
+            if(play.playDirection.values[0] == 'left'):
+                plt.plot([qbX.values[0] + 3, dlX.values[0]], [qbY.values[0], dlY.values[0]], marker='<')
+                print()
+                # getFunction(qbX.values[0] - 3, dlX.values[0], qbY.values[0], dlY.values[0], True)
+                getFunction(qbX.values[0] + 3, dlX.values[0], qbY.values[0], dlY.values[0])
+                print()
+            else:
+                plt.plot([qbX.values[0] - 3, dlX.values[0]], [qbY.values[0], dlY.values[0]], marker='<')
+                print()
+                # getFunction(qbX.values[0] - 3, dlX.values[0], qbY.values[0], dlY.values[0], True)
+                getFunction(qbX.values[0] - 3, dlX.values[0], qbY.values[0], dlY.values[0])
+                print()
     
 # simple y=mx+b equation    
 def getFunction(x1, x2, y1, y2): 
