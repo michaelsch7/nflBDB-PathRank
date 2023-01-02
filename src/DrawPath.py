@@ -29,5 +29,5 @@ def getPlayerXY(play, player):
         x = pPath.x
         y = pPath.y
 
-        return x[10:],y[10:]
+        return x[10:30],y[10:30]
 
