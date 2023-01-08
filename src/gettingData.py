@@ -3,7 +3,7 @@ import pandas as pd
 from DrawPath import drawPath, getPlayerXY
 import math 
 
-WEEKDF = pd.read_csv("data/week2.csv")
+WEEKDF = pd.read_csv("data/week8.csv")
 PLAYS = pd.read_csv("data/plays.csv")
 PLAYERS = pd.read_csv("data/players.csv")
 SCOUTING = pd.read_csv("data/pffScoutingData.csv") 
@@ -34,8 +34,8 @@ for gameid in games:
         df = df.append(newRow, ignore_index=True)
             
 compression_opts = dict(method='zip',
-                        archive_name='out.csv')  
-df.to_csv('out2.zip', index=False,
+                        archive_name='out8.csv')  
+df.to_csv('out8Data.zip', index=False,
           compression=compression_opts) 
 
     
