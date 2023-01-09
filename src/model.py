@@ -47,11 +47,6 @@ from sklearn import metrics
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-# model = MultinomialNB().fit(X_train, y_train)
-
-# y_pred = model.predict(X_test)
-# print('Accuracy:', metrics.accuracy_score(y_test, y_pred))
-# print('F1 score:', metrics.f1_score(y_test, y_pred, average="macro"))
 
 from sklearn.ensemble import RandomForestClassifier
 clf = RandomForestClassifier(n_estimators = 100)
